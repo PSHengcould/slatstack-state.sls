@@ -1,3 +1,4 @@
+思路2
 MySQL主从部署执行步骤
 1. 运行状态文件 master.sls
 2. 从master端拉取文件：
