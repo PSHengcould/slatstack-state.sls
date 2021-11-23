@@ -1,0 +1,13 @@
+[mysqld]
+basedir = {{ pillar['INSTALL_DIR'] }}/mysql
+datadir = {{ pillar['MYSQL_DATA'] }}/mysql/data
+socket = /tmp/mysql.sock
+port = 3306
+pid-file = {{ pillar['MYSQL_DATA'] }}/mysql/data/mysql.pid
+user = mysql
+# skip-name-resolve
+#
+# 主从配置参数
+server-id= {{ pillar['MYSQL_SLAVE_ID'] }}
+skip_name_resolve = ON
+relay-log=mysql_relay
