@@ -15,13 +15,13 @@
 # Please refer to systemd.unit(5), systemd.service(5), and systemd.exec(5) for
 # more information.
 
-[Unit]
-Description=Redis data structure server
-Documentation=https://redis.io/documentation
+#[Unit]
+#Description=Redis data structure server
+#Documentation=https://redis.io/documentation
 #Before=your_application.service another_example_application.service
 #AssertPathExists=/var/lib/redis
-Wants=network-online.target
-After=network-online.target
+#Wants=network-online.target
+#After=network-online.target
 
 [Service]
 ExecStart={{ pillar['INSTALL_DIR'] }}/redis/bin/redis-server {{ pillar['INSTALL_DIR'] }}/redis/redis.conf  --daemonize no
@@ -30,13 +30,13 @@ ExecReload=/bin/kill -s HUP $MAINPID
 ## Alternatively, have redis-server load a configuration file:
 #ExecStart=/usr/local/bin/redis-server /path/to/your/redis.conf
 LimitNOFILE=10032
-NoNewPrivileges=yes
+#NoNewPrivileges=yes
 #OOMScoreAdjust=-900
 #PrivateTmp=yes
-Type=notify
-TimeoutStartSec=infinity
-TimeoutStopSec=infinity
-UMask=0077
+#Type=notify
+#TimeoutStartSec=infinity
+#TimeoutStopSec=infinity
+#UMask=0077
 #User=redis
 #Group=redis
 #WorkingDirectory=/var/lib/redis
