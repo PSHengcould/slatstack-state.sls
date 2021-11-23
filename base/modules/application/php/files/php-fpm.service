@@ -1,0 +1,11 @@
+[Unit]
+Description=The PHP FastCGI Process Manager
+After=syslog.target network.target
+[Service]
+Type=forking
+ExecStart=/etc/init.d/php-fpm start
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStop=/etc/init.d/php-fpm stop
+
+[Install]
+WantedBy=multi-user.target

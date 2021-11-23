@@ -1,0 +1,12 @@
+[Unit]
+Description=The Nginx Server
+After=network.target 
+[Service]
+Type=forking
+PIDFile={{ pillar['INSTALL_DIR'] }}/nginx/logs/nginx.pid
+ExecStart={{ pillar['INSTALL_DIR'] }}/nginx/sbin/nginx  
+ExecStop={{ pillar['INSTALL_DIR']}}/nginx/sbin/nginx -s stop
+ExecReload={{ pillar['INSTALL_DIR']}}/nginx/sbin/nginx -s reload
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target

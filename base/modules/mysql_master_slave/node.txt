@@ -1,0 +1,8 @@
+MySQL主从部署执行步骤
+1. 运行状态文件 master.sls
+2. 从master端拉取文件：
+	salt 'master' cp.push /tmp/master_mysql_config.sh	
+3.  将拉取的文件移动至/srv/salt/base/modules/mysql_master_slave/files/，并命名为slave_mysql_config_new.sh
+	mv /var/cache/salt/master/minions/haprory-master/files/tmp/slave_mysql_config.sh /srv/salt/base/modules/mysql_master_slave/files/slave_mysql_config_new.sh
+
+4. 运行状态文件slave.sls

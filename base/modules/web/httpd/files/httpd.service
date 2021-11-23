@@ -1,0 +1,10 @@
+[Unit]
+Description=The Apache HTTP Server
+After=network.target 
+[Service]
+Type=forking
+PIDFile={{ pillar['INSTALL_DIR'] }}/apache/logs/httpd.pid
+ExecStart={{ pillar['INSTALL_DIR'] }}/apache/bin/apachectl $OPTIONS 
+ExecReload=/bin/kill -HUP $MAINPID
+[Install]
+WantedBy=multi-user.target
